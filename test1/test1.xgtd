@@ -1,5 +1,5 @@
 Format type:keyword version: 1.1.0
-begin_<project> Project6
+begin_<project> Test_Project_1
 project_id 24003
 begin_<globals> 
 longitude 0
@@ -288,7 +288,18 @@ farzone_z 2.500
 farzone_auto_positioned yes
 farzone_display_as pattern
 farzone_show_gain_arrow no
-FirstAvailableOutputRequestNumber 0
+FirstAvailableOutputRequestNumber 1
+begin_<gain> Gain_Request
+OutputRequestNumber 0
+active
+vary both
+theta_start 0.000
+theta_stop 180.000
+theta_inc 1.000
+phi_start 0.000
+phi_stop 360.000
+phi_inc 1.000
+end_<gain>
 CEF no
 ComplexImpulseResponse no
 DelaySpread yes

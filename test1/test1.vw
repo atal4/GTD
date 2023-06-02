@@ -18,8 +18,8 @@ gridElevation 0
 autoGridElevation on
 gridspacing 1.2192
 gridQuadrants 1
-grid 1
-legend 1
+grid 0
+legend 0
 descriptions on
 description_backgrounds on
 end_<States>
@@ -29,12 +29,12 @@ begin_<Rotations>
 2d 0 0 0
 end_<Rotations>
 begin_<Translations> 
-3dOrthographic -13.1168 2.7192 -1.625
+3dOrthographic -4.49424 1.15489 1.11007
 3dPerspective 0 0 0
-2d 0.2808 -0.3596 0
+2d 0 0 0
 end_<Translations>
 begin_<Scale> 
-3dOrthographic 0.542628 0.542628 0.9
+3dOrthographic 0.501973 0.501973 0.9
 3dPerspective 1 1 1
-2d 0.329099 0.329099 0.9
+2d 1 1 1
 end_<Scale>
