@@ -24,17 +24,17 @@ descriptions on
 description_backgrounds on
 end_<States>
 begin_<Rotations> 
-3dOrthographic -44.4031 0 28.8657
+3dOrthographic -52.7429 0 16.9976
 3dPerspective 0 0 0
 2d 0 0 0
 end_<Rotations>
 begin_<Translations> 
-3dOrthographic -4.49424 1.15489 1.11007
+3dOrthographic -7.09949 -0.195721 1.67651
 3dPerspective 0 0 0
 2d 0 0 0
 end_<Translations>
 begin_<Scale> 
-3dOrthographic 0.501973 0.501973 0.9
+3dOrthographic 0.609984 0.609984 0.946419
 3dPerspective 1 1 1
 2d 1 1 1
 end_<Scale>

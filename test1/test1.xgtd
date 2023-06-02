@@ -245,7 +245,7 @@ filename ./test1.txrx
 FirstAvailableTxRxNumber 6
 end_<txrx_sets>
 FirstAvailableCommSystemNumber 0
-begin_<antenna> UAN
+begin_<antenna> HemiAntenna1
 antenna 0
 type userdefined
 waveform 0
@@ -289,7 +289,7 @@ farzone_auto_positioned yes
 farzone_display_as pattern
 farzone_show_gain_arrow no
 FirstAvailableOutputRequestNumber 1
-begin_<gain> Gain_Request
+begin_<gain> Gain_Request_1
 OutputRequestNumber 0
 active
 vary both
