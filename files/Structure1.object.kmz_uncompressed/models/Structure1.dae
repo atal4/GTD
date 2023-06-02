@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+    <asset>
+        <unit name="meter" meter="1" />
+        <up_axis>Z_UP</up_axis>
+    </asset>
+    <library_materials>
+        <material id="default_material0" name="default_material0">
+            <instance_effect url="#default_material_fx"/>
+        </material>
+    </library_materials>
+    <library_geometries>
+        <geometry id="geometry_data0">
+            <mesh>
+                <source id="positions0">
+                    <float_array id="positions-array0" count="24">
+
+                        0 0 0
+                        0 0 5
+                        0 3 0
+                        0 3 5
+                        4 0 0
+                        4 0 5
+                        4 3 0
+                        4 3 5
+                    </float_array>
+                    <technique_common>
+                        <accessor count="8" offset="0" source="#positions-array0" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <source id="normals0">
+                    <float_array id="normals-array0" count="18">
+
+                        -1 0 0
+                        0 -1 0
+                        0 0 -1
+                        0 0 1
+                        0 1 0
+                        1 0 0
+                    </float_array>
+                    <technique_common>
+                        <accessor count="6" offset="0" source="#normals-array0" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <vertices id="face_vertices0">
+                    <input semantic="POSITION" source="#positions0"/>
+                </vertices>
+                <triangles count="12">
+                    <input offset="0" semantic="VERTEX" source="#face_vertices0"/>
+                    <input offset="1" semantic="NORMAL" source="#normals0"/>
+                    <p>
+                        1 0 3 0 2 0
+                        1 0 2 0 0 0
+                        5 1 1 1 0 1
+                        5 1 0 1 4 1
+                        7 5 5 5 4 5
+                        7 5 4 5 6 5
+                        3 4 7 4 6 4
+                        3 4 6 4 2 4
+                        1 3 5 3 7 3
+                        1 3 7 3 3 3
+                        2 2 6 2 4 2
+                        2 2 4 2 0 2
+
+                    </p>
+                </triangles>
+            </mesh>
+        </geometry>
+    </library_geometries>
+    <library_visual_scenes>
+        <visual_scene id="VisualSceneNode">
+            <node id="node0">
+                <instance_geometry url="#geometry_data0">
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="default_material0" target="#default_material0" />
+                        </technique_common>
+                    </bind_material>
+                </instance_geometry>
+            </node>
+
+        </visual_scene>
+    </library_visual_scenes>
+    <scene>
+        <instance_visual_scene url="#VisualSceneNode"/>
+    </scene>
+</COLLADA>
