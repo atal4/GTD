@@ -70,13 +70,13 @@ end_<model>
 begin_<boundary> 
 begin_<reference> 
 cartesian
-longitude -2.24589621664215e-006
-latitude -2.24589621664215e-006
+longitude -2.25000000000000
+latitude -2.25000000000000
 visible no
 sealevel
 end_<reference>
-zmin -1.10000002384186
-zmax 5.09999990463257
+zmin -1.10000000000000
+zmax 5.10000000000000
 nVertices 4
 0 0 0
 8.75 0 0
@@ -188,7 +188,7 @@ begin_<Waveform> Sinusoid
 Sinusoid
 waveform 0
 frequencyDistribution Uniform 500.000 1500.000 inactive nosampling 10
-CarrierFrequency 2203199951.172
+CarrierFrequency 2203200000.000
 phase 0.000
 bandwidth 1000000.000
 end_<Waveform>
