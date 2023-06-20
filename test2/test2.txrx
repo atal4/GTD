@@ -1,4 +1,4 @@
-begin_<points> Tx 1
+begin_<points> Tx n1
 project_id 1
 active
 begin_<cart> 
@@ -53,9 +53,9 @@ power 0.00000
 end_<transmitter>
 powerDistribution Uniform 10.00000 10.00000 inactive nosampling 10
 end_<points>
-begin_<points> Rx 1
+begin_<points> Rx n1
 project_id 2
-active
+inactive
 begin_<cart> 
 channel -1
 band Unspecified
@@ -88,7 +88,7 @@ visible no
 sealevel
 end_<reference>
 nVertices 1
-20.000000000000000 0.000000000000000 0.000000000000000
+16.000000000000000 0.000000000000000 0.000000000000000
 end_<location>
 pattern_show_arrow no
 pattern_show_as_sphere no
@@ -105,7 +105,7 @@ rotation_y 180.00000
 rotation_z 0.00000
 end_<pattern>
 begin_<sbr> 
-collection_radius 2.50000
+collection_radius 2.51000
 end_<sbr>
 end_<receiver>
 powerDistribution Uniform 10.00000 10.00000 inactive nosampling 10
