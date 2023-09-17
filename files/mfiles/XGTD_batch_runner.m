@@ -8,13 +8,6 @@ dx = 25; % Reeciver X-axis location step size (25[m])
 xgtdFilePath = 'E:\files\xgtd\test2\test2.xgtd';
 txrxFilePath = 'E:\files\xgtd\test2\test2.txrx';
 
-% if isfile(xgtdFilePath) && isfile(txrxFilePath)
-%     runXGTD(xgtdFilePath, txrxFilePath, X_MAX, DX, SA_PADDING, RAY_SPACING);
-% else
-%     fprintf('One or both input files do not exist or are not accessible.\n')
-%     abort;
-% end
-
 try
     steps = xMax/dx; % total number of iterations/runs
 
@@ -221,12 +214,4 @@ end
 function block = setBlockStatus(block,status)
     % Set block status to 'active' or 'inactive'
     block = regexprep(block,'^(active|inactive)',status,'lineanchors');
-end
-
-function y = readInput()
-    var = inputname(1);
-    y = input(['Enter the value of ' var ' : ']);
-    if (y<0)
-        y = readInput(x);
-    end
 end
