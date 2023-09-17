@@ -1,15 +1,20 @@
 clc;clear all;
 
 % Define Constants
-xMax = 75; % Reciver maximum X-axis location (50[m])
+x1 = 25;
+x2 = 75; % Reciver maximum X-axis location (50[m])
 dx = 25; % Reciver X-axis location step size (25[m])
+if x1 > x2
+    dx=-dx;
+end
 
 % Paths to main XGTD Project file (*.xgtd) and Trasnmitters and Recivers file (*.txrx)
 xgtdFilePath = 'E:\files\xgtd\test2\test2.xgtd';
 txrxFilePath = 'E:\files\xgtd\test2\test2.txrx';
 
 try
-    steps = xMax/dx; % total number of iterations/runs
+    steps = (x2-x1)/dx+1; % total number of iterations/runs
+    xRx=(x1:dx:x2);
 
     % Parse files
     [xgtdFilename, saBlocks, saParameters, xgtdSplit] = parseFile(xgtdFilePath);
@@ -59,16 +64,16 @@ try
         else
             if SAcount > 1
                 % Set all SA blocks status to inactive
-                saBlocks = setBlockStatus(saBlocks,'inactive');
+                saBlocks = regexprep(saBlocks,'^(active)','inactive','lineanchors');
             end
             if TXRXcount > 2
                 % Set all Tx/Rx sets blocks status to inactive
-                txrxBlocks = setBlockStatus(txrxBlocks,'inactive');
+                txrxBlocks = regexprep(txrxBlocks,'^(active)','inactive','lineanchors');
             end
         
             % Set the status of first transmitter and receiver sets & first manual SA block to 'active'
-            saBlocks(m) = setBlockStatus(saBlocks(m),'active');
-            txrxBlocks([t,r]) = setBlockStatus(txrxBlocks([t,r]),'active');
+            saBlocks(m) = regexprep(saBlocks(m),'^(inactive)','active','lineanchors');
+            txrxBlocks([t,r]) = regexprep(txrxBlocks([t,r]),'^(inactive)','active','lineanchors');
         
             % Create a table to store the updated receiver set parameters to keep track on changes
             saParametersNew = repmat(saParameters(m,:),steps,1);
@@ -97,7 +102,7 @@ try
             ind = find(xSA(1,:) == maxX);
             % Update the X coordinates with the new value
             SApadding = 0.25; % Study Area padding
-            xSA(:, ind) = repmat((dx*(1:steps))+SApadding, numel(ind),1)';
+            xSA(:, ind) = repmat(xRx+SApadding, numel(ind),1)';
             % Assign the new X coordinates to the vertices
             saParametersNew.vertex1 = mat2cell([xSA(:,1) ySA(:,1) zSA(:,1)], ones(1, steps));
             saParametersNew.vertex2 = mat2cell([xSA(:,2) ySA(:,2) zSA(:,2)], ones(1, steps));
@@ -105,17 +110,13 @@ try
             saParametersNew.vertex4 = mat2cell([xSA(:,4) ySA(:,4) zSA(:,4)], ones(1, steps));
         
             % Update the RX block coordinates
-            xRX = repmat(dx*(1:steps),1);
-            yRx = repmat([txrxParameters.location{r}(2)], steps, 1);
-            zRX = repmat([txrxParameters.location{r}(3)], steps, 1);
-            % Assign the new X coordinates to the vertices
-            rxParametersNew.location = mat2cell([xRX(:) yRx(:) zRX(:)], ones(1, steps));
+            rxParametersNew.x(:) = num2cell(xRx,1);
         
             % Update the Collection Radius for each iteration/x-location
             W = max(unique(ySA(1,:))) - min(unique(ySA(1,:)));   % Study Area distance along Y-axis (fixed) [m]
             H = saParameters.zmax{m} - saParameters.zmin{m}; % Study Area distance along Z-axis (fixed) [m] (zmax-zmin)
             RaySpacing = 0.25 * pi/180; % Ray Spacing = 0.25°
-            L=xRX+SApadding;  %L=[X(:)]+SApadding   % Study Area distance along X-axis (relative to Receiver coordinate xRX) [m]
+            L=xRx+SApadding;  %L=[X(:)]+SApadding   % Study Area distance along X-axis (relative to Receiver coordinate xRX) [m]
             MaxSA_Diag = sqrt(L.^2 + W.^2 + H.^2); % Max_Study_Area_Diagonal_Distance is the diagonal of the Study Area boundary around all Features, Transmitters, and Receivers in the project view (cuboid)
             rxParametersNew.radius(:) = num2cell(MaxSA_Diag*RaySpacing);    % Calculate Collection Radis
 
@@ -150,18 +151,18 @@ try
                 % Update the progress bar by displaying the number of current run
                 waitbar(i/steps,h,sprintf('Running XGTD calculation engine for SA %d…', i));
                 % Plot the collection radius vs receiver location
-                plot(rxParametersNew.location{i}(1), rxParametersNew.radius{i}, 'o');
+                plot(rxParametersNew.x{i}, rxParametersNew.radius{i}, 'o');
                 legend(rxParametersNew.name{:});
                 drawnow;
 
                 % Update the SA block with the modified values
                 saBlocks(m) = regexprep(saBlocks(m), ...
-                ['(.*?)' saTemp.name{1} '(.*?)' num2str(saTemp.id{1}) '(.*?\r\n)' sprintf('%g %g %g\r\n',cell2mat(saTemp{1,9:12})) '(.*?)'], ...
-                ['$1' saParametersNew.name{i} '$2' num2str(saParametersNew.id{i}) '$3' sprintf('%g %g %.g\r\n',cell2mat(saParametersNew{i,9:12})) '$4'],'ignorecase');
+                ['(.*?)' saTemp.name{1} '(.*?)' num2str(saTemp.id{1}) '(.*?^)' sprintf('%g %g %g\r\n',cell2mat(saTemp{1,9:12})) '(.*?)'], ...
+                ['$1' saParametersNew.name{i} '$2' num2str(saParametersNew.id{i}) '$3' sprintf('%g %g %.g\r\n',cell2mat(saParametersNew{i,9:12})) '$4'],'lineanchors');
                 % Update the Tx/Rx block with the modified values
                 txrxBlocks(r) = regexprep(txrxBlocks(r), ...
-                ['(.*?)' txrxTemp.name{1} '(.*?)' num2str(txrxTemp.id{1}) '(.*?\r\n)' sprintf('%.15f %.15f %.15f',txrxTemp.location{1}) '(.*?)' num2str(txrxTemp.radius{1},"%.5f") '(.*?)'], ...
-                ['$1' rxParametersNew.name{i} '$2' num2str(rxParametersNew.id{i}) '$3' sprintf('%.15f %.15f %.15f',rxParametersNew.location{i}) '$4' num2str(rxParametersNew.radius{i},"%.5f") '$5'],'ignorecase');
+                ['(.*?)' txrxTemp.name{1} '(.*?)' num2str(txrxTemp.id{1}) '(.*?^)' sprintf('%.15f',txrxTemp.x{1}) '(.*?)' num2str(txrxTemp.radius{1},"%.5f") '(.*?)'], ...
+                ['$1' rxParametersNew.name{i} '$2' num2str(rxParametersNew.id{i}) '$3' sprintf('%.15f',rxParametersNew.x{i}) '$4' num2str(rxParametersNew.radius{i},"%.5f") '$5'],'lineanchors');
     
                 % Join the modified blocks into a new string
                 xgtdFileContentNew = join([xgtdSplit(1); reshape([saBlocks; xgtdSplit(2:end)], [], 1)], '');
@@ -250,16 +251,10 @@ function [fileName, blocks, parameters, split] = parseFile(filePath)
         % Convert numeric variables from string to numeric
         parameters{:,{'id','auto','longitude','latitude','zmin','zmax','vertex1','vertex2','vertex3','vertex4'}} = cellfun(@str2num,parameters{:, {'id','auto','longitude','latitude','zmin','zmax','vertex1','vertex2','vertex3','vertex4'}},'UniformOutput',false);
     elseif ext == ".txrx"
-        [blocks,parameters,split] = regexp(fileContent,'begin_<points> (?<name>[^\r\n]+).*?(?<id>\d+)\s+(?<status>\w+).*?(?<location>\S+\s\S+\s\S+).*?begin_<(?<type>transmitter|receiver)>(?:(?!begin_<points>|collection_radius).)*(?:collection_radius )?(?<radius>[\d\.]*)?(?:(?!begin_<points>).)*end_<points>','match','names','split');
+        [blocks,parameters,split] = regexp(fileContent,'begin_<points> (?<name>[^\r\n]+).*?(?<id>\d+)\s+(?<status>\w+).*?(?#location)(?<x>\S+)\s(?<y>\S+)\s(?<z>\S+).*?begin_<(?<type>transmitter|receiver)>(?:(?!begin_<points>|collection_radius).)*(?:collection_radius )?(?<radius>[\d\.]*)?(?:(?!begin_<points>).)*end_<points>','match','names','split');
         % Convert the matched parameters strcuture to table
         parameters = struct2table(parameters,"AsArray",true);
         % Convert numeric variables from string to numeric
-        parameters{:,{'id','location','radius'}} = cellfun(@str2num,parameters{:, {'id','location','radius'}},'UniformOutput',false);
+        parameters{:,{'id','x','y','z','radius'}} = cellfun(@str2num,parameters{:, {'id','x','y','z','radius'}},'UniformOutput',false);
     end
-end
-
-% Function to set activate/desactivate blocks
-function block = setBlockStatus(block,status)
-    % Set block status to 'active' or 'inactive'
-    block = regexprep(block,'^(active|inactive)',status,'lineanchors');
 end
