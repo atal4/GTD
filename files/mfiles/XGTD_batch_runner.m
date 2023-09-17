@@ -1,8 +1,8 @@
 clc;clear all;
 
 % Define Constants
-xMax = 75; % Reeciver maximum X-axis location (50[m])
-dx = 25; % Reeciver X-axis location step size (25[m])
+xMax = 75; % Reciver maximum X-axis location (50[m])
+dx = 25; % Reciver X-axis location step size (25[m])
 
 % Paths to main XGTD Project file (*.xgtd) and Trasnmitters and Recivers file (*.txrx)
 xgtdFilePath = 'E:\files\xgtd\test2\test2.xgtd';
@@ -18,8 +18,10 @@ try
     % Check for empty blocks
     if isempty(saBlocks)
         fprintf('No Study Area blocks found in file ''%s''\n',xgtdFilename);
+        return;
     elseif isempty(txrxBlocks)
         fprintf('No Tx/Rx blocks found in file ''%s''\n',txrxFilename);
+        return;
     else
         % Find indices of Study Area blocks
         saAutoIndices = find([saParameters.auto{:}] == 1);
@@ -47,10 +49,13 @@ try
         % Look for 1st manual SA blocks and edit block's parameters
         if isempty(m)
                 fprintf('No manual Study Area block found\n');
+                return;
         elseif isempty(r)
                 fprintf('No Receiver block found\n');
+                return;
         elseif isempty(t)
                 fprintf('No Transmitter block found\n');
+                return;
         else
             if SAcount > 1
                 % Set all SA blocks status to inactive
@@ -92,15 +97,15 @@ try
             ind = find(xSA(1,:) == maxX);
             % Update the X coordinates with the new value
             SApadding = 0.25; % Study Area padding
-            xSA(:, ind) = repmat((25*(1:steps))+SApadding, numel(ind),1)';
-            % Assign the new X coordinates to the vertices (maybe we can use 'parfor')
+            xSA(:, ind) = repmat((dx*(1:steps))+SApadding, numel(ind),1)';
+            % Assign the new X coordinates to the vertices
             saParametersNew.vertex1 = mat2cell([xSA(:,1) ySA(:,1) zSA(:,1)], ones(1, steps));
             saParametersNew.vertex2 = mat2cell([xSA(:,2) ySA(:,2) zSA(:,2)], ones(1, steps));
             saParametersNew.vertex3 = mat2cell([xSA(:,3) ySA(:,3) zSA(:,3)], ones(1, steps));
             saParametersNew.vertex4 = mat2cell([xSA(:,4) ySA(:,4) zSA(:,4)], ones(1, steps));
         
             % Update the RX block coordinates
-            xRX = repmat(25*(1:steps),1);
+            xRX = repmat(dx*(1:steps),1);
             yRx = repmat([txrxParameters.location{r}(2)], steps, 1);
             zRX = repmat([txrxParameters.location{r}(3)], steps, 1);
             % Assign the new X coordinates to the vertices
@@ -120,8 +125,35 @@ try
             cmdStatus = cell(steps,1);
             cmdOut = cell(steps,1);
             logs = strings(size(cmdStatus'));
+
+            % Initialize arrays to store the time stamps
+            startTime = cell(steps, 1);
+            endTime = cell(steps, 1);
+            elapsedTime = cell(steps, 1);
+
+            % Display the number of runs
+            fprintf('\nRunning XGTD computation process for %d runs...\n',steps);
+            
+            % Create a progress bar
+            h = waitbar(0,'Please wait...');
+            
+            % Create a figure for the plot
+            figure;
+            hold on;
+            xlabel('Receiver Location (m)');
+            ylabel('Collection Radius (m)');
+            title('Collection Radius vs Receiver Location');
+            grid on;
+
             for i = 1:steps
                 rxParametersNew.progress{i} = 'Running...';
+                % Update the progress bar by displaying the number of current run
+                waitbar(i/steps,h,sprintf('Running XGTD calculation engine for SA %d…', i));
+                % Plot the collection radius vs receiver location
+                plot(rxParametersNew.location{i}(1), rxParametersNew.radius{i}, 'o');
+                legend(rxParametersNew.name{:});
+                drawnow;
+
                 % Update the SA block with the modified values
                 saBlocks(m) = regexprep(saBlocks(m), ...
                 ['(.*?)' saTemp.name{1} '(.*?)' num2str(saTemp.id{1}) '(.*?\r\n)' sprintf('%g %g %g\r\n',cell2mat(saTemp{1,9:12})) '(.*?)'], ...
@@ -138,28 +170,39 @@ try
                 % Write the updated contnet back to file
                 writelines(xgtdFileContentNew,xgtdFilePath);
                 writelines(txrxFileContentNew,txrxFilePath);
-    
+   
                 % Execute the command with the file name as an argument to run XGTD calculation engine each iteration
                 % If command is successful, status is 0. Otherwise, nonzero integer
-                fprintf('Running XGTD calcuation engine for SA %d...\n', i);
                 xgtdCommand = ['"C:\Program Files\Remcom\XGtd 3.1.2.0\bin\calc\calcgtd.exe" --project="' xgtdFilePath '"'];
+                
+                % Record the start time of the command execution and add the time stamps to the updated parameters table
+                startTime{i} = datetime('now');
+                rxParametersNew.startTime{i} = char(startTime{i});
                 [cmdStatus{i},cmdOut{i}] = system(xgtdCommand,'-echo'); % to ommit execution display: [cmdStatus{i},cmdOut{i}] = system(xgtdCommand);
+                endTime{i} = datetime('now');
+                rxParametersNew.endTime{i} = char(endTime{i});
+                elapsedTime{i} = between(startTime{i},endTime{i});
+                rxParametersNew.elapsedTime{i} = char(elapsedTime{i});
     
                 % Log messages for each iteration
                 logs(i) = sprintf('Run #%d logs:------------------------------------------------\n', i);
                 if  cmdStatus{i} == 0
-                    logs(i) = logs(i) + sprintf('Command Status: %d = (successful)\n', cmdStatus{i});
+                    status = 'successful';
                     rxParametersNew.progress{i} = 'Completed';
                 else
-                    logs(i) = logs(i) + sprintf('Command Status: %d (not successful)\n', cmdStatus{i});
+                    status = 'not successful';
                     rxParametersNew.progress{i} = 'Failed';
                 end
+                logs(i) = logs(i) + sprintf('Command Status: %d = (%s)\n', cmdStatus{i},status);
                 logs(i) = logs(i) + sprintf('Command Output:\n%s\n------------------------------------------------------------\n', cmdOut{i});
             
                 % Store the updated receiver set parameters in the temp table
                 saTemp = saParametersNew(i,:);
                 txrxTemp = rxParametersNew(i,:);
             end
+            % Close the progress bar
+            close(h);
+
             if all([cmdStatus{:}] == 0)
                 fprintf('XGTD computation process has finished running %d runs successfully.\n',steps);
             else
@@ -167,7 +210,7 @@ try
             end
             % Write logs to file
             writelines(logs,[xgtdFilePath, '.m.log']);
-           
+
             % Display the updated parameters
             fprintf('\nUpdated blocks:\n');
             disp(saParametersNew);
@@ -189,7 +232,7 @@ end
 
 % Function to parse files
 function [fileName, blocks, parameters, split] = parseFile(filePath)
-    % Define Constants
+    % Extract file name and extension
     [~,name,ext] = fileparts(filePath);
     fileName = [name ext];
     
