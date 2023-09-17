@@ -113,12 +113,15 @@ try
             L=xRX+SApadding;  %L=[X(:)]+SApadding   % Study Area distance along X-axis (relative to Receiver coordinate xRX) [m]
             MaxSA_Diag = sqrt(L.^2 + W.^2 + H.^2); % Max_Study_Area_Diagonal_Distance is the diagonal of the Study Area boundary around all Features, Transmitters, and Receivers in the project view (cuboid)
             rxParametersNew.radius(:) = num2cell(MaxSA_Diag*RaySpacing);    % Calculate Collection Radis
+
+            rxParametersNew.progress(:) = {'Pending'};
         
             % Initialize arrays to store the command outputs & logs
             cmdStatus = cell(steps,1);
             cmdOut = cell(steps,1);
             logs = strings(size(cmdStatus'));
             for i = 1:steps
+                rxParametersNew.progress{i} = 'Running...';
                 % Update the SA block with the modified values
                 saBlocks(m) = regexprep(saBlocks(m), ...
                 ['(.*?)' saTemp.name{1} '(.*?)' num2str(saTemp.id{1}) '(.*?\r\n)' sprintf('%g %g %g\r\n',cell2mat(saTemp{1,9:12})) '(.*?)'], ...
@@ -146,8 +149,10 @@ try
                 logs(i) = sprintf('Run #%d logs:------------------------------------------------\n', i);
                 if  cmdStatus{i} == 0
                     logs(i) = logs(i) + sprintf('Command Status: %d = (successful)\n', cmdStatus{i});
+                    rxParametersNew.progress{i} = 'Completed';
                 else
                     logs(i) = logs(i) + sprintf('Command Status: %d (not successful)\n', cmdStatus{i});
+                    rxParametersNew.progress{i} = 'Failed';
                 end
                 logs(i) = logs(i) + sprintf('Command Output:\n%s\n------------------------------------------------------------\n', cmdOut{i});
             
