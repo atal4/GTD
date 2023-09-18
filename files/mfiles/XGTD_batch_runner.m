@@ -1,8 +1,8 @@
 clc;clear all;
 
 % Define Constants
-x1 = 25;
-x2 = 75; % Reciver maximum X-axis location (50[m])
+x1 = 100;
+x2 = 50; % Reciver maximum X-axis location (50[m])
 dx = 25; % Reciver X-axis location step size (25[m])
 if x1 > x2
     dx=-dx;
