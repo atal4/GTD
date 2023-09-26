@@ -1,0 +1,737 @@
+ This file contains diagnostic information on the items listed below.
+ Search for each keyword to go to the relevant sections of the file.
+ Some categories may appear in more than one place in the file.
+
+
+ 1. Version
+ 2. Warning
+ 3. Error
+ 4. Files
+ 5. Receiver Sets
+ 6. Transmitter Sets
+ 7. Antennas
+ 8. Waveforms
+ 9. Materials
+ 10. Geometry
+ 11. Propagation Model
+ 12. Calculation Progress
+ 13. Study Areas
+ 14. Allocation
+ 15. Timings
+ 16. Output Filter
+ 17. Far Zone Parameters
+
+
+ ==================== VERSION ====================
+
+ calcgtd version 3.1.2.0                         
+
+ ===================== FILES =====================
+
+  setup path =  E:\Data\Range Rate Data\run6\
+  project path =  E:\Data\Range Rate Data\run6\multipath
+  project name =  multipath
+  project file =  E:\Data\Range Rate Data\run6\multipath.xgtd
+  diag path =  diag\
+  diag+project path =  E:\Data\Range Rate Data\run6\diag\multipath
+  param rank suffix =   
+  param rank chars =   
+
+ ================== ALLOCATION ==================
+
+   Allocating Study Area Data
+   Allocation Successful (23)
+
+ ================== ALLOCATION ==================
+
+   Allocating Waveform Data
+   Allocation Successful (21)
+
+ ================== ALLOCATION ==================
+
+   Allocating Filter Data
+   Allocation Successful (19)
+
+ ================== ALLOCATION ==================
+
+   Allocating Feature Data
+   Allocation Successful (12)
+
+ ================== ALLOCATION ==================
+
+   Allocating Far Zone Data
+   Allocation Successful (20)
+
+ ================== ALLOCATION ==================
+
+   Allocating Antenna Data
+   Allocation Successful (10)
+
+ ===================== FILES =====================
+
+  Make directory
+  E:\Data\Range Rate Data\run6\sa 2 - 50m
+
+  The directory
+  E:\Data\Range Rate Data\run6\sa 2 - 50m
+  has been created
+
+ ================== ALLOCATION ==================
+
+   Allocating Receiver Set Data
+   Allocation Successful (13)
+
+ ================== ALLOCATION ==================
+
+   Allocating Transmitter Data
+   Allocation Successful (14)
+
+ ================== STUDY AREAS ==================
+
+ Study Area:   1
+ Maximum Width (m):     75.28
+
+ ================== ALLOCATION ==================
+
+   Allocating Transmitter Properties Data
+   Allocation Successful (7)
+
+ ================== ALLOCATION ==================
+
+   Allocating Receiver Properties Data
+   Allocation Successful (5)
+
+ ================== ALLOCATION ==================
+
+   Allocating Transmitter-Receiver Pair Data
+   Allocation Successful (8)
+
+================ TRANSMITTER SETS =================
+
+Transmitter Set Number:     1
+Type: Points                 
+Name: halo +x
+Status: active    
+Number of Points:       1
+First Active:       1
+Last Active:       1
+Spacing (m):    10.0000
+Local Origin : X =      0.000, Y =      0.000
+Fit to Terrain: No 
+Rotation (Deg.):    0.000
+Antenna: halo vv
+Antenna Rotation Parameters (Deg.):
+    About X :    0.000
+    About Y :   90.000
+    About Z :    0.000
+Surface Mounted : No 
+Waveform: sinusoid
+Velocity (m/s):     0.0000
+
+================ RECEIVER SETS =================
+
+Receiver Set Number:     1
+Type: Points                 
+Name: rx 2 - 50m
+Status: active    
+Number of Points:       1
+Spacing (m):    10.0000
+Local Origin : X =      0.000, Y =      0.000
+Fit to Terrain: No 
+Rotation (Deg.):    0.000
+Antenna: halo vv
+Antenna Rotation Parameters (Deg.):
+    About X :    0.000
+    About Y :  -90.000
+    About Z :    0.000
+Surface Mounted : No 
+Waveform: sinusoid
+Auto Set Collection Radius: No 
+Collection Radius:     0.3117
+Use Bounding Box: No 
+Velocity (m/s):     0.0000
+Generate P2P Output: Yes
+
+ ================== ANTENNAS ====================
+ 
+ Antenna Number =           3
+ Status = In use    
+ Name = halo vv                                                                 
+ Type = User defined                                                            
+ Polarization = Undefined 
+ Waveform = sinusoid                                                                
+ Frequency (MHz): N/A
+ Gain (dBi) =    5.410
+ Autogain Setting: Off
+ Loss (dB) =    0.000
+ VSWR =    1.00
+ Receiver Threshold (dBm) =   -250.0000    
+
+ ================== WAVEFORMS ====================
+ 
+ Waveform Number:            1
+ Status: In use        
+ Name: sinusoid
+ Wave Type: Non-Dispersive
+ Pulse Shape = Sinusoid                                
+ Pulse Width (s) =   1.0000000E-06
+ Carrier Frequency (MHz) =    1000.000    
+ Bandwidth (MHz) =    1.000000    
+ Frequency_max (MHz) =    1000.500    
+ Frequency_min (MHz) =    999.5000    
+ Frequency_inc (MHz) =    5.000000    
+ Energy in Bandwidth =   0.0000 %
+ Energy Between Truncation Points =   0.0000 %
+ File Name:  none
+
+ Tx Waveform:   1
+ Status: In use        
+     Rx Waveform :  1,   Receiver Filter Loss (dB) =    0.00
+
+ ================= RECEIVER SETS =================
+
+
+Receiver Set Number:     1
+Type: Points                 
+Name: rx 2 - 50m
+Status: active    
+Number of Points:       1
+Auto Set Collection Radius: No 
+Collection Radius:     0.3117
+Use Bounding Box: No 
+
+ ================== ALLOCATION ==================
+
+   Allocating 3D Geometry Data
+   Allocation Successful (11)
+
+ ================== 3D GEOMETRY ==================
+
+ NStrctGroup3D=           5
+ NSTRCT3D=          35
+ NSUB3D=          35
+ NFACE3D=         326
+ MAX_VERTICES=          24
+ MAX_FACES_ON_SUB=          44
+ MAX_SUBS=           1
+ MAX_SUPER=           1
+ MAX_STRUCTURE=          17
+ NumPartition=           5
+ Number of outer boundary faces=           6
+
+ ================== 3D GEOMETRY ==================
+
+  Number of Faces =    326
+  Number of Active Faces =    326
+  Number of Substructures =     35
+  Number of Active Substructures =     35
+
+ ================== ALLOCATION ==================
+
+   Allocating Material Data
+
+ ================= DEALLOCATION =================
+
+   Deallocating Materials Data
+   Deallocation Successful (15)
+   Allocation Successful (15)
+
+ ================== MATERIALS ====================
+
+Material Number:   1
+Name: metal
+Type: PEC
+Associated with feature: 0     
+Roughness (m) =   0.000
+Total Thickness (m) =    0.000
+
+Material Number:   2
+Name: metal
+Type: PEC
+Associated with feature: 1     
+Roughness (m) =   0.000
+Total Thickness (m) =    0.000
+
+Material Number:   3
+Name: metal
+Type: PEC
+Associated with feature: 2     
+Roughness (m) =   0.000
+Total Thickness (m) =    0.000
+
+Material Number:   4
+Name: metal
+Type: PEC
+Associated with feature: 4     
+Roughness (m) =   0.000
+Total Thickness (m) =    0.000
+
+ ================== ALLOCATION ==================
+
+   Allocation Successful (25)
+
+   Constructing 3-D Edges
+       10 Percent Completed    0h  0m  0s
+       20 Percent Completed    0h  0m  0s
+       30 Percent Completed    0h  0m  0s
+       40 Percent Completed    0h  0m  0s
+       50 Percent Completed    0h  0m  0s
+       60 Percent Completed    0h  0m  0s
+       70 Percent Completed    0h  0m  0s
+       80 Percent Completed    0h  0m  0s
+       90 Percent Completed    0h  0m  0s
+      100 Percent Completed    0h  0m  0s
+
+ ================== 3D GEOMETRY ==================
+
+  Number of Edges =   1136
+
+ ================== ALLOCATION ==================
+
+   Allocating Edge Data NUMEDGES=        1136
+   Allocation Successful (18)
+
+  Analyzing project geometry and settings
+
+
+  Cannot use accelerated RCS ray tracing:
+
+
+    Project contains active near zone receiver sets.
+
+
+  Cannot use accelerated RCS ray tracing:
+
+
+    Project contains more than one geometry feature.
+
+
+   Creating 3-D halfspace partitions
+      100 Percent Completed 
+ WidthX,Y,Z (m) =    15.61000       24.97000       43.30000    
+ Geometrical tolerance factor (m) =   5.2364710E-05
+
+ ================== 3D GEOMETRY ==================
+
+
+     Creating new 3D face ordering data
+      100 Percent Completed 
+  Mean number of faces per partition=    24.23
+  Mean number of partitions=   4.29
+
+ ================= RECEIVER SETS =================
+
+ First Active Rx=            1
+ Last Active Rx=            1
+ First Active Rx Set=            1
+ Last Active Rx Set=            1
+
+ =============== TRANSMITTER SETS ===============
+
+ First Active Tx=            1
+ Last Active Tx=            1
+ First Active Tx Set=            1
+ Last Active Tx Set=            1
+ Number of Active Point Sources =           1
+ Number of Active Plane Waves =           0
+
+ ================== STUDY AREAS ==================
+
+ Study Area:   1
+ Zmin=    -21.90
+ Zmax=     21.90
+
+ ================== ALLOCATION ==================
+
+   Allocating E-Field Data
+   Allocation Successful (9)
+
+ ================== ALLOCATION ==================
+
+   Allocating E-Field Data
+
+ ================= DEALLOCATION =================
+
+   Deallocating Efield Data
+   Deallocation Successful (9)
+   Allocation Successful (9)
+
+ =============== PROPAGATION MODEL ===============
+
+     Study area number:            1
+     Short description: sa 2 - 50m
+     Propagation model: full3d              
+     Point source ray spacing (deg.):   0.250
+     Plane wave ray spacing (m):   0.100
+     Plane wave phase reference:       2.725      8.135      0.000
+     Number of rays:         1440
+     Maximum reflections:            4
+     Maximum transmissions:            0
+     Maximum wedge diffractions:  1
+     Maximum surface diffractions:  1
+     Maximum reflections before first diffraction:  2
+     Maximum reflections between diffractions:  0
+     Maximum reflections after last diffraction:  2
+     Maximum transmissions before first diffraction:  0
+     Maximum transmissions between diffractions:  0
+     Maximum transmissions after last diffraction:  0
+     Ray tracing method: SBR                 
+     Ray tracing acceleration: partitions
+       Using half-space partitions
+ Sum Rays with Phase: All                 
+ Use creeping waves: Yes
+Minimum Wedge Angle =  179.75
+Maximum Wedge Angle =  198.01
+ Maximum Excess Path Loss =   -250.0000    
+ Maximum number of interactions on ray path:            5
+ MaxPath =          300
+ MaxDPath =          130
+ MaxDPoint =           40
+ MaxRec =           19
+ MaxPathRec =           35
+ MaxPathRecLength=       74274
+ MaxIncDiffPaths =        27480
+ MaxStoredPaths =          250
+ MaxCPath =        10500
+ MaxLoop3D=         326
+ Use Face Ordering:  T
+    Percentage of faces using ordering:    100.0000      %
+    Percentage not using ordering:   0.0000000E+00  %
+     Available Memory (MB) = 17475.76
+     Maximum Memory Used (MB) =    76.39
+     MaxPathMemory (MB) =  8712.48
+     ActualPathMemory (MB) =     0.03
+     MaxDiffPathMemory (MB) =   700.00
+     ActualDiffPathMemory (MB) =    72.99
+     Actual3dPathMemory (MB) =     2.67
+     Actual3dGeoMemory (MB) =     0.70
+ 
+
+ ================== ALLOCATION ==================
+
+   Allocating Incident Diffracted Path Data
+   Allocation Successful (3)
+
+ ================== ALLOCATION ==================
+
+   Allocating Partial Paths Data
+   Allocation Successful (4)
+
+ ================== ALLOCATION ==================
+
+   Allocating Ray Tracing Data
+   Allocation Successful (6)
+   File Type: 3dpath
+   Record Length =        29504
+   File Type: efield
+   Record Length =        14504
+
+ =============== PROPAGATION MODEL ===============
+
+
+  Setup for ray tracing
+
+ ================== ALLOCATION ==================
+
+   Allocating 3D Bounding Box Data
+   Allocation Successful (24)
+
+ ================= RECEIVER SETS =================
+
+   Nbox3D =            0
+
+ ===================== FILES =====================
+
+   File Type: path
+   Record Length =        37200
+   MaxPath3DRecords =       577280
+   File Type: dpath
+   Record Length =         1936
+   File Type: efield
+   Record Length =        14504
+
+ =============== PROPAGATION MODEL ===============
+
+   Number of Independent Interaction Sequences:      1
+ Theta min,max =   0.0000000E+00   180.0000    
+ Phi min,max=  0.0000000E+00   360.0000    
+
+ ============= CALCULATION PROGRESS =============
+
+
+  Searching for paths
+
+ ================== ALLOCATION ==================
+
+   Allocating SBR Data
+   Allocation Successful (1)
+   File Type: dpath
+   Record Length =         1936
+   dpath File, Transmitter Set/Point: 001/0001
+
+ ================= DEALLOCATION =================
+
+   Deallocating SBR Data
+   Deallocation Successful (1)
+
+ ============= CALCULATION PROGRESS =============
+
+ Theta min,max =   0.0000000E+00   180.0000    
+ Phi min,max=  0.0000000E+00   360.0000    
+       10 Percent Completed    0h  0m  0s
+       20 Percent Completed    0h  0m  0s
+       30 Percent Completed    0h  0m  1s
+       40 Percent Completed    0h  0m  1s
+       50 Percent Completed    0h  0m  1s
+       60 Percent Completed    0h  0m  1s
+       70 Percent Completed    0h  0m  2s
+       80 Percent Completed    0h  0m  2s
+       90 Percent Completed    0h  0m  2s
+      100 Percent Completed    0h  0m  3s
+ Theta min,max =   0.0000000E+00   180.0000    
+ Phi min,max=  0.0000000E+00   360.0000    
+
+    Searching for paths with 0 diffractions
+ Theta min,max =   0.0000000E+00   180.0000    
+ Phi min,max=  0.0000000E+00   360.0000    
+
+ ================== ALLOCATION ==================
+
+   Allocating SBR Data
+
+ ================= DEALLOCATION =================
+
+   Deallocating SBR Data
+   Deallocation Successful (1)
+   Allocation Successful (1)
+
+ ================== ALLOCATION ==================
+
+   Allocating Ray Tracing Data
+
+ ================= DEALLOCATION =================
+
+   Deallocating Ray Tracing Data
+   Deallocation Successful (6)
+   Allocation Successful (6)
+
+ ================== ALLOCATION ==================
+
+   Allocating 3D Bounding Box Data
+   Deallocating 3D Bounding Box Data
+   Deallocation Successful (26)
+   Allocation Successful (26)
+      10 Percent Completed    0h  0m  0s
+      20 Percent Completed    0h  0m  0s
+      30 Percent Completed    0h  0m  0s
+      40 Percent Completed    0h  0m  0s
+      50 Percent Completed    0h  0m  0s
+      60 Percent Completed    0h  0m  0s
+      70 Percent Completed    0h  0m  1s
+      80 Percent Completed    0h  0m  1s
+      90 Percent Completed    0h  0m  1s
+     100 Percent Completed    0h  0m  1s
+
+    Searching for paths with 1 diffraction
+
+ ================== ALLOCATION ==================
+
+   Allocating SBR Data
+
+ ================= DEALLOCATION =================
+
+   Deallocating SBR Data
+   Deallocation Successful (1)
+   Allocation Successful (1)
+
+ ================== ALLOCATION ==================
+
+   Allocating Ray Tracing Data
+
+ ================= DEALLOCATION =================
+
+   Deallocating Ray Tracing Data
+   Deallocation Successful (6)
+   Allocation Successful (6)
+
+ ================== ALLOCATION ==================
+
+   Allocating 3D Bounding Box Data
+   Deallocating 3D Bounding Box Data
+   Deallocation Successful (26)
+   Allocation Successful (26)
+      10 Percent Completed    0h  0m  2s
+      20 Percent Completed    0h  0m  3s
+      30 Percent Completed    0h  0m  5s
+      40 Percent Completed    0h  0m  6s
+      50 Percent Completed    0h  0m  6s
+      60 Percent Completed    0h  0m  7s
+      70 Percent Completed    0h  0m  8s
+      80 Percent Completed    0h  0m 10s
+      90 Percent Completed    0h  0m 11s
+     100 Percent Completed    0h  0m 13s
+
+ =============== PROPAGATION MODEL ===============
+
+  Number of diffraction points
+  Search Method: 1
+       1, Diffraction Points:         8267             0
+    Total Diffraction Points:         8267
+
+  Search Method: 2
+       1, Diffraction Points:            0             0
+    Total Diffraction Points:            0
+
+  Search Method: 3
+       1, Diffraction Points:            0             0
+    Total Diffraction Points:            0
+
+  Search Method: 4
+       1, Diffraction Points:            0             0
+    Total Diffraction Points:            0
+
+  Search Method: 5
+       1, Diffraction Points:            0             0
+    Total Diffraction Points:            0
+
+
+  Number of incident diffracted paths =          304
+
+ ============= CALCULATION PROGRESS =============
+
+
+  Constructing 3D paths and evaluating E-fields                           
+    Transmitter set: halo +x
+
+ ================== ALLOCATION ==================
+
+   Allocating 3D Path Data
+   Allocation Successful (22)
+
+ ===================== FILES =====================
+
+   File Type: 3dpath
+   Record Length =        29504
+   File Type: efield
+   Record Length =        14504
+   3dpath File, Transmitter Set/Point: 001/0001
+   File Type: 3dpath
+   Record Length =        29504
+   efield File, Transmitter Set/Point: 001/0001
+   File Type: efield
+   Record Length =        14504
+
+ ============= CALCULATION PROGRESS =============
+
+     100 Percent Completed    0h  0m  0s
+
+ ================= DEALLOCATION =================
+
+   Deallocating 3D Path Data
+   Deallocation Successful (22)
+   File Type: ipath
+   Record Length =        10404
+   ipath File, Transmitter Set/Point: 001/0001
+
+ ===================== FILES =====================
+
+  Final path.dat file size and status for transmitter point   1 on set   1
+
+  Combined File Status: 1
+  Set Number:   1, File Status: 1 Size:    0.1 MB
+
+ ================= DEALLOCATION =================
+
+   Deallocating 3D Geometry Relational Data
+   Deallocation Successful (25)
+
+ ================== ALLOCATION ==================
+
+   Allocating 3D Path Data
+   Allocation Successful (22)
+
+ ============= CALCULATION PROGRESS =============
+
+   Start combining fields and writing output
+
+ ================== ALLOCATION ==================
+
+   Allocating E-Field Data
+
+ ================= DEALLOCATION =================
+
+   Deallocating Efield Data
+   Deallocation Successful (9)
+   Allocation Successful (9)
+
+ ============= CALCULATION PROGRESS =============
+
+   Writing point-to-many output
+
+ ================== ALLOCATION ==================
+
+   Allocating 3D Path Data
+
+ ================= DEALLOCATION =================
+
+   Deallocating 3D Path Data
+   Deallocation Successful (22)
+   Allocation Successful (22)
+
+ ================== ALLOCATION ==================
+
+   Allocating E-Field Data
+
+ ================= DEALLOCATION =================
+
+   Deallocating Efield Data
+   Deallocation Successful (9)
+   Allocation Successful (9)
+
+ ===================== FILES =====================
+
+   File Type: 3dpath
+   Record Length =        29504
+   File Type: efield
+   Record Length =        14504
+   efield File, Transmitter Set/Point: 001/0001
+   3dpath File, Transmitter Set/Point: 001/0001
+
+ ============= CALCULATION PROGRESS =============
+
+     10 Percent Completed    0h  0m  0s
+
+ ============= CALCULATION PROGRESS =============
+
+   Finish combining fields and writing output
+
+ ================= DEALLOCATION =================
+
+   Deallocating 3D Path Data
+   Deallocation Successful (22)
+
+ ===================== FILES =====================
+
+  Final path.dat file size and status
+
+  Combined File Status: 1
+  Set Number:   1, File Status: 1 Size:    0.1 MB
+
+ ==================== TIMINGS ====================
+
+
+
+   Timing results for study area sa 2 - 50m
+   Timing results for study area sa 2 - 50m
+
+   Searching for First Order Diffracting Edges:   0h 0m 3s
+
+   Searching for Paths:   0h 0m 14s
+
+   Study Area Run Time:   0h 0m 17s
+
+ ============= CALCULATION PROGRESS =============
+
+
+
+  Finished

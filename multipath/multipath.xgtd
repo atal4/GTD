@@ -1,0 +1,281 @@
+Format type:keyword version: 1.1.0
+begin_<project> multipath
+project_id 15313
+begin_<globals> 
+longitude 0
+latitude 0
+end_<globals>
+FirstAvailableUnknownLayoutNumber 0
+FirstAvailableStudyAreaNumber 52
+begin_<studyarea> SA 800 - 20000m
+StudyAreaNumber 400
+active
+begin_<partitioning> 
+partitioning_type disabled
+queuing_type disabled
+max_threads 0
+num_partitions 2
+end_<partitioning>
+begin_<apg_acceleration> 
+enabled no
+workflow_mode full
+binary_output_mode none
+binary_rate 0 active
+database_mode write_siso
+path_depth 25
+adjacency_distance 10
+end_<apg_acceleration>
+autoboundary 0
+begin_<model> 
+full3d
+raytracingmode sbr
+rcs_method mec_po
+creepingwaves Yes
+ray_spacing 0.25
+plane_wave_phase_reference automatic
+2.725 8.135 0
+max_reflections 4
+max_transmissions 0
+max_surface_diffractions 1
+max_wedge_diffractions 1
+begin_<OutputRequests> 
+CEF no
+ComplexImpulseResponse yes
+DelaySpread yes
+FieldAnimation no
+DirectionOfArrival no
+DirectionOfDeparture no
+ElectricFieldVsFrequency no
+ElectricFieldVsTime no
+EMFields no
+FSPathloss no
+FSPower no
+InputData no
+MeanDirectionOfArrival no
+MeanDirectionOfDeparture no
+MeanTimeOfArrival no
+Pathloss yes
+Paths yes
+Power yes
+PowerDelayProfile no
+TimeOfArrival yes
+XPathloss no
+C2I no
+ScatteringAmplitude no
+SParameter no
+StrongestTx no
+TotalReceivedPower yes
+end_<OutputRequests>
+end_<model>
+begin_<boundary> 
+begin_<reference> 
+cartesian
+longitude 0
+latitude 0
+visible no
+sealevel
+end_<reference>
+zmin -21.9
+zmax 21.9
+nVertices 4
+-5.33 -4.6 0
+20000.3 -4.6 0
+20000.3 20.87 0
+-5.33 20.87 0
+end_<boundary>
+end_<studyarea>
+begin_<feature> 
+feature 0
+object
+active
+filename ./IAC6_AADA.object
+end_<feature>
+begin_<feature> 
+feature 1
+object
+active
+filename ./IAC6_HALO_2.object
+end_<feature>
+begin_<feature> 
+feature 2
+object
+active
+filename ./IAC6_PPE.object
+end_<feature>
+begin_<feature> 
+feature 3
+object
+inactive
+filename ./IAC6_IHAB.object
+end_<feature>
+begin_<feature> 
+feature 4
+object
+active
+filename ./IAC6_HLS.object
+end_<feature>
+begin_<feature> 
+feature 5
+object
+inactive
+filename ./IAC6_Refueler.object
+end_<feature>
+begin_<txrx_sets> 
+filename ./multipath.txrx
+FirstAvailableTxRxNumber 73
+end_<txrx_sets>
+FirstAvailableCommSystemNumber 0
+begin_<antenna> Half-wave dipole
+antenna 0
+type HalfWaveDipole
+waveform 0
+polarization vertical
+power_threshold -250
+cable_loss 0
+VSWR 1
+component TotalGain
+gain_range 40
+show_arrow no
+is_sphere no
+end_<antenna>
+begin_<antenna> Half-wave dipole
+antenna 1
+type HalfWaveDipole
+waveform 0
+polarization vertical
+power_threshold -250
+cable_loss 0
+VSWR 1
+component TotalGain
+gain_range 40
+show_arrow no
+is_sphere no
+end_<antenna>
+begin_<antenna> HALO VV
+antenna 2
+type userdefined
+waveform 0
+power_threshold -250
+cable_loss 0
+VSWR 1
+gain 5.41
+component TotalGain
+gain_range 40
+show_arrow no
+is_sphere no
+SurfaceMounted no
+filename ./Halo-VV-pat.uan
+gainSpecification FromUanFile
+end_<antenna>
+begin_<antenna> Half-wave dipole
+antenna 3
+type HalfWaveDipole
+waveform 0
+polarization vertical
+power_threshold -250
+cable_loss 0
+VSWR 1
+component TotalGain
+gain_range 40
+show_arrow no
+is_sphere no
+end_<antenna>
+begin_<antenna> Directional
+antenna 4
+type directional
+waveform 0
+polarization RightCircular
+power_threshold -250
+cable_loss 0
+VSWR 1
+gain 14
+component TotalGain
+gain_range 40
+show_arrow no
+is_sphere no
+eplane_hpbw 90
+hplane_hpbw 90
+eplane_fnbw 180
+hplane_fnbw 180
+end_<antenna>
+begin_<Waveform> Sinusoid
+Sinusoid
+waveform 0
+frequencyDistribution Uniform 500.000 1500.000 inactive nosampling 10
+CarrierFrequency 1000000000.000
+phase 0.000
+bandwidth 1000000.000
+end_<Waveform>
+FirstAvailableFilterNumber 0
+begin_<requests> 
+cartesian
+sealevel
+local
+CalculationMode New
+MaxRenderedPaths 25
+FieldAnimationIncrement 10
+FieldAnimationTimeAveraged yes
+farzone_polarization TotalGain
+farzone_gain_range 40.000
+farzone_auto_radius yes
+farzone_radius 13.091
+farzone_x 2.725
+farzone_y 8.135
+farzone_z 0.000
+farzone_auto_positioned yes
+farzone_display_as pattern
+farzone_show_gain_arrow no
+FirstAvailableOutputRequestNumber 0
+CEF no
+ComplexImpulseResponse yes
+DelaySpread yes
+FieldAnimation no
+DirectionOfArrival no
+DirectionOfDeparture no
+ElectricFieldVsFrequency no
+ElectricFieldVsTime no
+EMFields no
+FSPathloss no
+FSPower no
+InputData no
+MeanDirectionOfArrival no
+MeanDirectionOfDeparture no
+MeanTimeOfArrival no
+Pathloss yes
+Paths yes
+Power yes
+PowerDelayProfile no
+TimeOfArrival yes
+XPathloss no
+C2I no
+ScatteringAmplitude no
+SParameter no
+StrongestTx no
+TotalReceivedPower yes
+end_<requests>
+begin_<Scales> 
+GlobalOpacity 0.750
+begin_<MpeThreshhold> 
+AutoScaling 0
+DrawValues 0
+AutoUpdating 0
+Discrete 1
+UseGlobalOpacity 1
+ManualValuesSet 1
+ClampedHigh 1
+ClampedLow 1
+Alpha 1.000e+000
+ManualMin 0.000e+000
+ManualMax 2.000e+002
+TextColor 1.000 1.000 1.000
+Colors 4
+0.300 0.000 0.500
+0.000 1.000 0.000
+1.000 1.000 0.000
+1.000 0.000 0.000
+PartitionValues 
+3
+0.001 50.000 100.000 
+end_<MpeThreshhold>
+end_<Scales>
+end_<project>

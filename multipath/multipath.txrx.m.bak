@@ -1,0 +1,121 @@
+begin_<points> HALO +X
+project_id 1
+active
+begin_<cart> 
+channel -1
+band Unspecified
+reference_to Cart
+draw_ref_line false
+draw_ref_angle false
+draw_ref_distance false
+reference_txrx Receiver
+reference_set -1
+reference_point 0
+display true
+end_<cart>
+vertical_line no
+cube_size 0.20000
+CVxLength 10.00000
+CVyLength 10.00000
+CVzLength 10.00000
+AntennaPatternScale 1.00000
+ShowDescription no
+CVsVisible yes
+CVsLocation -1
+PatternOption TransmitterAntennaOption
+CVsThickness 3
+begin_<location> 
+begin_<reference> 
+cartesian
+longitude 0.000000000000000
+latitude 0.000000000000000
+visible no
+sealevel
+end_<reference>
+nVertices 1
+7.130000000000000 1.320000000000000 0.230000000000000
+end_<location>
+pattern_show_arrow no
+pattern_show_as_sphere no
+generate_p2p yes
+use_apg_acceleration no
+is_transmitter yes
+is_receiver no
+begin_<transmitter> 
+begin_<pattern> 
+antenna 2
+waveform 0
+rotation_x 0.00000
+rotation_y 90.00000
+rotation_z 0.00000
+end_<pattern>
+power 0.00000
+end_<transmitter>
+begin_<receiver> 
+begin_<pattern> 
+antenna 1
+waveform -1
+rotation_x 0.00000
+rotation_y 0.00000
+rotation_z 0.00000
+end_<pattern>
+end_<receiver>
+powerDistribution Uniform 10.00000 10.00000 inactive nosampling 10
+end_<points>
+begin_<points> Rx 800 - 20000m
+project_id 401
+active
+begin_<cart> 
+channel -1
+band Unspecified
+reference_to Cart
+draw_ref_line false
+draw_ref_angle false
+draw_ref_distance false
+reference_txrx Receiver
+reference_set -1
+reference_point 0
+display false
+end_<cart>
+vertical_line no
+cube_size 0.20000
+CVxLength 10.00000
+CVyLength 10.00000
+CVzLength 10.00000
+AutoPatternScale
+ShowDescription no
+CVsVisible yes
+CVsLocation -1
+PatternOption ReceiverAntennaOption
+CVsThickness 3
+begin_<location> 
+begin_<reference> 
+cartesian
+longitude 0.000000000000000
+latitude 0.000000000000000
+visible no
+sealevel
+end_<reference>
+nVertices 1
+20000.000000000000000 0.000000000000000 0.000000000000000
+end_<location>
+pattern_show_arrow no
+pattern_show_as_sphere no
+generate_p2p yes
+use_apg_acceleration no
+is_transmitter no
+is_receiver yes
+begin_<receiver> 
+begin_<pattern> 
+antenna 2
+waveform 0
+rotation_x 0.00000
+rotation_y -90.00000
+rotation_z 0.00000
+end_<pattern>
+begin_<sbr> 
+collection_radius 87.26827
+end_<sbr>
+end_<receiver>
+powerDistribution Uniform 10.00000 10.00000 inactive nosampling 10
+end_<points>
